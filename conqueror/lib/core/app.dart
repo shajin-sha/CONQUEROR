@@ -20,7 +20,7 @@ class App extends StatelessWidget {
           title: 'Flutter Demo',
           theme: AppTheme.appLightTheme,
           routes: Routes.roots,
-          initialRoute: Paths.home,
+          initialRoute: Paths.otp,
         ),
       ),
     );

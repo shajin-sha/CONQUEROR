@@ -15,7 +15,6 @@ class Paths {
 
 class Routes {
   static Map<String, WidgetBuilder> roots = {
-    // Paths.home: (context) => const HomeScreen(), // Home
     Paths.home: (context) => const HomeScreen(), // Home
     Paths.disease: (context) => const DiseaseScreen(), // Disease
     Paths.report: (context) => const NewReportScreen(), // Report
