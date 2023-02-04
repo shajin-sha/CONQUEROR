@@ -12,7 +12,7 @@ The problem solved by this app is providing people with an easy and accessible w
 <br>
 
 ## Project Description 
-Introducing Health Hub, an innovative health management app designed to help individuals stay informed and proactive about their health. With its cutting-edge technology and user-friendly interface, Health Hub provides a personalized and comprehensive solution to managing your health.
+Introducing HealthEyes, an innovative health management app designed to help individuals stay informed and proactive about their health. With its cutting-edge technology and user-friendly interface, HealthEyes provides a personalized and comprehensive solution to managing your health.
 
 Features:
 
@@ -20,7 +20,7 @@ Disease Awareness: Get real-time updates and alerts about diseases in your area,
 Doctor and Hospital Finder: Find the best doctors and hospitals in your area based on ratings, availability, and proximity.
 Personalized Health Recommendations: Get personalized health recommendations based on your symptoms, risk factors, and previous reports.
 Awareness Feed: Stay informed about new developments and information about diseases, hospitals, and doctors through the awareness feed, where our partners can post updates.Access more information about diseases, symptoms, causes, and treatments directly from Wikipedia.
-Health Hub is your one-stop solution for all your health-related needs, empowering you to make informed decisions and take charge of your health.
+HealthEyes is your one-stop solution for all your health-related needs, empowering you to make informed decisions and take charge of your health.
 <br>
 
 ## Team members
