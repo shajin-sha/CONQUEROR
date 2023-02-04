@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:conqueror/const/const.dart';
+import 'package:conqueror/controllers/providers/home_state_provider.dart';
 import 'package:conqueror/controllers/providers/location_provider.dart';
 import 'package:conqueror/core/helpers/helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,7 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LocationProvider locationProvider = Provider.of<LocationProvider>(context);
+    final homeStateProvider = context.watch<HomeStateProvider>();
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -58,7 +60,15 @@ class HomeHeader extends StatelessWidget {
                       child: Text(formatAddress(locationProvider.placemarks), style: const TextStyle(color: Colors.black, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis),
                     ),
                     const SizedBox(width: 10),
-                    const Text("Change", style: TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          duration: Duration(seconds: 8),
+                          content: Text("Prototype software : You can search an address and see the information,disease etc.. of that specific location with this option."),
+                        ));
+                      },
+                      child: const Text("Change", style: TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
+                    ),
                     const Icon(CupertinoIcons.right_chevron, size: 10, color: Colors.blue),
                   ],
                 ),
@@ -69,10 +79,13 @@ class HomeHeader extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(color: grayColor, borderRadius: const BorderRadius.all(Radius.circular(10))),
                 child: Row(
-                  children: const [
-                    SizedBox(width: 10),
-                    Text("Suggestions", style: TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
-                    Icon(CupertinoIcons.right_chevron, size: 12, color: Colors.blue),
+                  children: [
+                    const SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () => homeStateProvider.navigateTo(2),
+                      child: Text(homeStateProvider.partnerMood ? "Paid promotion" : "Suggestions", style: const TextStyle(color: Colors.blue, fontSize: 10, fontWeight: FontWeight.bold)),
+                    ),
+                    const Icon(CupertinoIcons.right_chevron, size: 12, color: Colors.blue),
                   ],
                 ),
               ),

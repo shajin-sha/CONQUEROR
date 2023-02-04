@@ -1,5 +1,6 @@
 import 'package:conqueror/controllers/providers/home_state_provider.dart';
 import 'package:conqueror/controllers/providers/location_provider.dart';
+import 'package:conqueror/controllers/providers/resent_reports_provider.dart';
 import 'package:conqueror/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,6 +58,7 @@ class Providers {
   static List<SingleChildWidget> providersList = [
     ChangeNotifierProvider(create: (_) => HomeStateProvider()),
     ChangeNotifierProvider(create: (_) => LocationProvider()),
+    ChangeNotifierProvider(create: (_) => ResentReportsProvider()),
   ];
 }
 
@@ -101,7 +103,7 @@ class ConstanceData {
 
 int colorsIndex = 0;
 
-var primaryColorString = '#ed617b';
+var primaryColorString = '#3a7bfc';
 var secondaryColorString = '#293462';
 var primaryGrayColorString = '#ECECEC';
 var blueColorString = "#3D8BFF";

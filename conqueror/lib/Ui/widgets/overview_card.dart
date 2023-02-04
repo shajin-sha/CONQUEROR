@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class OverviewCards extends StatelessWidget {
-  const OverviewCards({super.key});
+  final String avatarText;
+  final String title;
+  final String subtitle;
+  const OverviewCards({super.key, this.avatarText = "35%", this.title = "Title", this.subtitle = "Subtitle"});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +26,16 @@ class OverviewCards extends StatelessWidget {
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Theme.of(context).colorScheme.primary,
-                child: Text("35%", style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: Text(avatarText, style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Title", style: Theme.of(context).textTheme.bodySmall!.copyWith(overflow: TextOverflow.ellipsis, fontWeight: FontWeight.bold, fontSize: 18)),
+                Text(title, style: Theme.of(context).textTheme.bodySmall!.copyWith(overflow: TextOverflow.ellipsis, fontWeight: FontWeight.bold, fontSize: 18)),
                 SizedBox(
-                  child: Text("Location relation", style: Theme.of(context).textTheme.bodySmall!.copyWith(overflow: TextOverflow.ellipsis)),
+                  child: Text(subtitle, style: Theme.of(context).textTheme.bodySmall!.copyWith(overflow: TextOverflow.ellipsis)),
                 ),
               ],
             ),

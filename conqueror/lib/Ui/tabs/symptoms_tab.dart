@@ -1,11 +1,14 @@
 import 'package:conqueror/Ui/widgets/common/heading.dart';
+import 'package:conqueror/controllers/providers/resent_reports_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SymptomsTab extends StatelessWidget {
   const SymptomsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ResentReportsProvider resentReportsProvider = Provider.of<ResentReportsProvider>(context);
     return Column(
       children: [
         SizedBox(height: MediaQuery.of(context).padding.top),
@@ -13,13 +16,19 @@ class SymptomsTab extends StatelessWidget {
         const Divider(),
         Expanded(
           child: Wrap(
-            children: const [
-              ChoiceChip(label: Text("Fever"), selected: true),
-              ChoiceChip(label: Text("Cough"), selected: true),
-              ChoiceChip(label: Text("Shortness of breath"), selected: false),
-              ChoiceChip(label: Text("Sore throat"), selected: false),
-              ChoiceChip(label: Text("Shortness of breath"), selected: false),
-            ],
+            children: resentReportsProvider.symptoms
+                .map((e) => Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: ChoiceChip(
+                        onSelected: (bool selected) {
+                          resentReportsProvider.toggleSymptom(e['name']);
+                        },
+                        label: Text(e['name'], style: TextStyle(color: e['is_selected'] ? Colors.white : Colors.black)),
+                        selected: e['is_selected'],
+                        selectedColor: Theme.of(context).colorScheme.primary,
+                      ),
+                    ))
+                .toList(),
           ),
         )
       ],

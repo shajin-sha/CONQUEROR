@@ -29,7 +29,7 @@ class ColorCard extends StatelessWidget {
             Icon(icon ?? CupertinoIcons.calendar, color: Colors.white, size: 25),
             const SizedBox(height: 5),
             Text(subtitle ?? "First reported", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
-            Text(title ?? "Dec 2019", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+            Text(title ?? "Dec 2019", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20, overflow: TextOverflow.ellipsis)),
           ],
         ),
       ),

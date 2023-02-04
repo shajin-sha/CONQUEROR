@@ -1,6 +1,7 @@
 import 'package:conqueror/Ui/widgets/overview_card.dart';
 import 'package:conqueror/const/const.dart';
 import 'package:conqueror/controllers/providers/home_state_provider.dart';
+import 'package:conqueror/controllers/providers/resent_reports_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ class OverviewGird extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeStateProvider homeStateProvider = Provider.of<HomeStateProvider>(context);
+    final ResentReportsProvider resentReportsProvider = Provider.of<ResentReportsProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: AnimatedContainer(
@@ -23,9 +25,17 @@ class OverviewGird extends StatelessWidget {
             SizedBox(height: homeStateProvider.isOverviewExpanded ? 15 : 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                OverviewCards(),
-                OverviewCards(),
+              children: [
+                OverviewCards(
+                  title: resentReportsProvider.overviewCardData[0]['disease_name'],
+                  avatarText: resentReportsProvider.overviewCardData[0]['predictions']['inPercentage'],
+                  subtitle: "${resentReportsProvider.overviewCardData[0]['disease_reported_by']} reported",
+                ),
+                OverviewCards(
+                  title: resentReportsProvider.overviewCardData[1]['disease_name'],
+                  avatarText: resentReportsProvider.overviewCardData[1]['predictions']['inPercentage'],
+                  subtitle: "${resentReportsProvider.overviewCardData[1]['disease_reported_by']} reported",
+                ),
               ],
             ),
             if (!homeStateProvider.isOverviewExpanded)
@@ -62,9 +72,17 @@ class OverviewGird extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      OverviewCards(),
-                      OverviewCards(),
+                    children: [
+                      OverviewCards(
+                        title: resentReportsProvider.overviewCardData[2]['disease_name'],
+                        avatarText: resentReportsProvider.overviewCardData[2]['predictions']['inPercentage'],
+                        subtitle: "${resentReportsProvider.overviewCardData[2]['disease_reported_by']} reported",
+                      ),
+                      OverviewCards(
+                        title: resentReportsProvider.overviewCardData[2]['disease_name'],
+                        avatarText: resentReportsProvider.overviewCardData[2]['predictions']['inPercentage'],
+                        subtitle: "${resentReportsProvider.overviewCardData[2]['disease_reported_by']} reported",
+                      ),
                     ],
                   ),
                 ],

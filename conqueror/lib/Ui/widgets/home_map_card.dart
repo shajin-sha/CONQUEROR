@@ -40,6 +40,8 @@ class HomeMapCard extends StatelessWidget {
                 // Keep  more tiles in memory
                 keepBuffer: 100000000000000 * 90000000000000,
               ),
+              // In real world, you should use a MarkerLayerOptions and load coordinates from server.
+              Image.asset('assets/images/zone.png'),
             ],
           ),
         ),

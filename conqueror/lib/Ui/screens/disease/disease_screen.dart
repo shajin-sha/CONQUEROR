@@ -1,15 +1,18 @@
 import 'package:conqueror/Ui/widgets/common/color_card.dart';
 import 'package:conqueror/Ui/widgets/common/heading.dart';
 import 'package:conqueror/Ui/widgets/home_map_card.dart';
+import 'package:conqueror/controllers/providers/resent_reports_provider.dart';
 import 'package:conqueror/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DiseaseScreen extends StatelessWidget {
   const DiseaseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ResentReportsProvider resentReportsProvider = Provider.of<ResentReportsProvider>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -28,31 +31,31 @@ class DiseaseScreen extends StatelessWidget {
                   children: [
                     ColorCard(
                       big: true,
-                      title: "Dec 2019",
+                      title: resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['first_date_case'],
                       subtitle: "First case",
                       icon: CupertinoIcons.calendar,
                       backgroundColor: HexColor("#b0e861"),
                     ),
                     ColorCard(
-                      title: "Fever",
+                      title: resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['major_symptom'],
                       backgroundColor: HexColor("#6cbcf5"),
                       subtitle: "Major symptoms",
                       icon: CupertinoIcons.person_solid,
                     ),
                     ColorCard(
                       subtitle: "Chance of infection",
-                      title: "High",
+                      title: resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['predictions']['chance'],
                       backgroundColor: HexColor("#f0785d"),
                     ),
                     ColorCard(
                       title: "Prevention",
-                      subtitle: "Wash your hands",
+                      subtitle: resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['predictions']['preventive_measures'],
                       backgroundColor: HexColor("#f7cf60"),
                       icon: CupertinoIcons.hand_raised,
                     ),
                     ColorCard(
                       subtitle: "Best nearby hospital",
-                      title: "Hospital 1",
+                      title: resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['nearby_partners'][0]['name'],
                       icon: CupertinoIcons.location,
                       backgroundColor: HexColor("#343633"),
                     ),
@@ -60,45 +63,20 @@ class DiseaseScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 const Heading(title: "Description", subtile: "More details of the disease", padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.", style: Theme.of(context).textTheme.bodySmall),
-                ),
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Text(resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['disease_description'], style: Theme.of(context).textTheme.bodySmall)),
                 const Divider(),
                 const SizedBox(height: 10),
                 // Symptoms
-                const Heading(title: "Symptoms", subtile: "Symptoms of the disease", padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1)),
-                const Divider(),
-                ListTile(title: const Text("Fever", style: TextStyle(fontWeight: FontWeight.bold)), trailing: Icon(CupertinoIcons.person_fill, color: Theme.of(context).colorScheme.primary), dense: true),
-                const ListTile(title: Text("Cough", style: TextStyle(fontWeight: FontWeight.bold)), trailing: Icon(CupertinoIcons.person_fill), dense: true),
-                const ListTile(title: Text("Shortness of breath", style: TextStyle(fontWeight: FontWeight.bold)), trailing: Icon(CupertinoIcons.person_fill), dense: true),
-                const Divider(),
                 const Heading(title: "Top consultants", subtile: "Top nearby hospital & doctors", padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1)),
-                ListTile(
-                  leading: const CircleAvatar(radius: 30),
-                  subtitle: const Text("hospital"),
-                  title: Text("Mammen Memorial Hospital", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 15)),
-                  trailing: const Icon(CupertinoIcons.phone_fill),
-                ),
-                ListTile(
-                  leading: const CircleAvatar(radius: 30),
-                  subtitle: const Text("Doctor"),
-                  title: Text("Shajin", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 15)),
-                  trailing: const Icon(CupertinoIcons.phone_fill),
-                ),
-                ListTile(
-                  leading: const CircleAvatar(radius: 30),
-                  subtitle: const Text("Testing lab"),
-                  title: Text("Hyper testing lab PVT", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 15)),
-                  trailing: const Icon(CupertinoIcons.phone_fill),
-                ),
-                const Divider(),
-                const Heading(title: "Prevention", subtile: "Prevention of the disease", padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1)),
-                ListTile(
-                  title: const Text("Wash your hands", style: TextStyle(fontWeight: FontWeight.bold)),
-                  trailing: Icon(CupertinoIcons.hand_raised_fill, color: Theme.of(context).colorScheme.primary),
-                  dense: true,
-                ),
+                const SizedBox(height: 10),
+                for (int i = 0; i < resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['nearby_partners'].length; i++)
+                  ListTile(
+                    leading: CircleAvatar(radius: 30, backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
+                    subtitle: Text(resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['nearby_partners'][i]['address'], style: Theme.of(context).textTheme.bodySmall),
+                    title: Text(resentReportsProvider.resentReports[resentReportsProvider.selectedIndex]['nearby_partners'][i]['name'], style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 15)),
+                    trailing: const Icon(CupertinoIcons.chevron_right),
+                  ),
+                SizedBox(height: MediaQuery.of(context).padding.bottom)
               ],
             ),
           ),
