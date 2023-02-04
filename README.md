@@ -31,7 +31,16 @@ HealthEyes is your one-stop solution for all your health-related needs, empoweri
 <!-- ## Link to product walkthrough
 <a href="https://www.youtube.com/watch?v=cbzObD3_JeA" target="_blank" ><img src="https://github.com/Noel6161131110/OpenAI_Saturday_Hack_Night/blob/main/Youtube_logo_PNG7.png" width="300" height="150" ></a> -->
 ## How it Works ?
-Explaining the working of project
+The proposed app aims to provide a comprehensive solution for individuals facing lifestyle diseases like diabetes and blood pressure. It will serve as a one-stop-shop for individuals looking to stay informed about diseases and find the best possible medical assistance. The app will have several key features to serve this purpose:
+
+Disease prediction - Using advanced algorithms, the app will predict potential diseases that the user might be at risk of, based on their symptoms and other risk factors.
+Awareness feed - Our partners, such as hospitals and doctors, can post valuable information, news, and warnings about diseases in the user's local area.
+Personalized recommendations - Based on users’ symptoms, risk factors, and previous reports, the app will offer personalized health recommendations.
+Doctor and hospital search - The app will allow users to search for the best doctor and hospital for their specific needs based on their location, reputation, and services offered.
+Map integration - A map will be integrated into the app, which will allow users to easily locate hospitals and doctors near their location.
+The app will be developed using Flutter, with the help of Location and Map packages.
+
+The overall aim of the app is to improve the health and well-being of individuals by providing them with relevant and up-to-date information, and by connecting them with the best medical assistance available.
 
 ## Photos of the Project
 <img src='https://github.com/shajin-sha/CONQUEROR/blob/main/assets/IMG_1285.PNG?raw=true' width="20%">
